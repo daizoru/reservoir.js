@@ -65,10 +65,12 @@ root.hash = (obj) ->
   h1 ^= h1 >>> 16
   h1 >>> 0
 
-if require? 
+if require? and Buffer?
   try
     XXHash = require 'xxhash'
-    root.hash = (obj) -> XXHash.hash JSON.stringify(obj), root.seed
+    root.hash = (obj) ->
+      str = new Buffer JSON.stringify obj
+      XXHash.hash str, root.seed
 
 class root.Reservoir
 
