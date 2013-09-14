@@ -105,20 +105,15 @@ class root.Reservoir
   ###
   run: (id) =>
     node = @get id
-    unless node?
-      #log "       neuron \"#{id}\" died"
-      return undefined
+    return unless node?
     return node.cache if node.cache?
-    #log "no cache for #{id}, re-creating it.."
     value = node.code (@run n for n in node.inputs)...
     if root.isValid value
-      #log "neuron #{id} is alive"
       node.cache = value
       value
     else
-      #log "neuron #{id} is dead"
       @delete id
-      undefined
+      return
 
   refill: ->
     len = @size()
@@ -149,6 +144,9 @@ class root.Reservoir
   ###
   get: (id) -> @reservoir[id]
 
+  ###
+  delete a node
+  ###
   delete: (id) -> delete @reservoir[id]
 
   ###
