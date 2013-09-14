@@ -1,7 +1,7 @@
 {
   "name": "reservoirjs",
-  "version": "0.0.2",
-  "description": "reservoir.js",
+  "version": "0.0.3",
+  "description": "library for managing a network of functions connected together",
   "main": "./lib/main.js",
   "lib": "./lib",
   "scripts": {

@@ -88,7 +88,7 @@ class root.Reservoir
   ###
   generate: ->  
     arity = Math.floor Math.random() * @library.length
-    functions = @library[@arity]
+    functions = @library[arity]
     name = root.pick Object.keys functions
     reservoirKeys = @list()
     nb_inputs = if !reservoirKeys.length then 0 else arity
