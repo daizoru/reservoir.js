@@ -1,6 +1,6 @@
 {
   "name": "reservoirjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "reservoir.js",
   "main": "./lib/main.js",
   "lib": "./lib",

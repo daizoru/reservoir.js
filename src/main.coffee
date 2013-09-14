@@ -87,17 +87,18 @@ class root.Reservoir
   note: id unique id is computed using the hash
   ###
   generate: ->  
-    category = root.pick Object.keys @library
-    key = root.pick Object.keys @library[category]
+    arity = Math.floor Math.random() * @library.length
+    functions = @library[@arity]
+    name = root.pick Object.keys functions
     reservoirKeys = @list()
-    nb_inputs = if !reservoirKeys.length then 0 else (Number) category
+    nb_inputs = if !reservoirKeys.length then 0 else arity
     node = 
-      category: category
-      key: key
-      code: @library[category][key]
+      arity: arity
+      name: name
+      code: functions[name]
       inputs: for i in [0...nb_inputs]
         root.pick reservoirKeys
-    id = root.hash node
+    id = root.hash(node).toString()
     @reservoir[id] = node
     id
 
